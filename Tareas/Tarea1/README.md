@@ -1,4 +1,4 @@
-# Tarea 1
+# Tarea 1 Modelos ágiles y herramientas de gestión de proyectos en la industria del software
 
 ## 1. Herramientas de gestión de proyectos de software
 
@@ -157,3 +157,61 @@ Ambos enfoques son compatibles y pueden combinarse para ajustarse a las necesida
 > - [Scrum Guide – scrumguides.org](https://scrumguides.org/)
 > - [Kanban Tool](https://kanbantool.com/kanban-guide)
 > - [Scrum vs Kanban – Atlassian](https://www.atlassian.com/agile/kanban/kanban-vs-scrum)
+
+
+## 3. Casos reales de aplicación en la industria
+
+A continuación, se analizan cómo **Spotify** y **Google** han implementado metodologías ágiles en sus procesos de desarrollo de software, destacando el marco de trabajo utilizado, las herramientas tecnológicas empleadas, la adaptación a su cultura organizacional, los beneficios y retos enfrentados, y una reflexión crítica sobre cada caso.
+
+### 3.1 Spotify
+
+**Marco de trabajo utilizado:**
+Spotify desarrolló su propio modelo ágil conocido como el "Modelo Spotify", una evolución de Scrum adaptada a sus necesidades de escalabilidad y autonomía de equipos. [Fuente](https://www.atlassian.com/agile/agile-at-scale/spotify)
+
+**Herramientas tecnológicas utilizadas:**
+Aunque Spotify utiliza diversas herramientas para la gestión de proyectos, el énfasis principal está en la estructura organizacional que permite la autonomía de los equipos, más que en herramientas específicas. [Fuente](https://www.atlassian.com/agile/agile-at-scale/spotify)
+
+**Adaptación a la cultura organizacional:**
+El Modelo Spotify se centra en la autonomía y la cultura de confianza. Los equipos, denominados "Squads", tienen la libertad de elegir su forma de trabajo, fomentando la innovación y la responsabilidad. Esta estructura está diseñada para ser flexible y adaptable, alineándose con los valores y la cultura de Spotify. [Fuente](https://www.atlassian.com/agile/agile-at-scale/spotify)
+
+**Beneficios y retos reportados:**
+- **Beneficios:**
+  - Mayor autonomía y empoderamiento de los equipos.
+  - Incremento en la innovación y rapidez en el desarrollo.
+  - Cultura organizacional más fuerte y cohesionada.
+- **Retos:**
+  - Dificultades en la coordinación interequipos debido a la alta autonomía.
+  - Complejidad en la gestión de dependencias entre Squads.
+
+**Reflexión crítica:**
+El enfoque de Spotify demuestra que adaptar metodologías ágiles a la cultura y necesidades específicas de una empresa puede resultar en una mayor eficiencia y satisfacción del equipo. Sin embargo, es esencial equilibrar la autonomía con mecanismos efectivos de coordinación para evitar silos y asegurar la alineación organizacional.
+
+### 3.2 Google
+
+**Marco de trabajo utilizado:**
+Google ha adoptado diversas metodologías ágiles, incluyendo Scrum y Kanban, adaptándolas según las necesidades de sus equipos y proyectos. [Fuente](https://medium.com/%40agile-transformation-leaders/how-google-embraced-agile-transformation-for-teams-to-enhance-team-productivity-and-workflow-714b97af50e1)
+
+**Herramientas tecnológicas utilizadas:**
+Google utiliza una variedad de herramientas internas y externas para la gestión ágil de proyectos, incluyendo sistemas de seguimiento de incidencias y plataformas de colaboración en tiempo real.
+
+**Adaptación a la cultura organizacional:**
+La implementación de metodologías ágiles en Google se alinea con su cultura de innovación continua y experimentación. Se promueve un ambiente donde los equipos tienen la libertad de experimentar, aprender de los fracasos y mejorar continuamente. [Fuente](https://medium.com/%40agile-transformation-leaders/how-google-embraced-agile-transformation-for-teams-to-enhance-team-productivity-and-workflow-714b97af50e1)
+
+**Beneficios y retos reportados:**
+- **Beneficios:**
+  - Aumento en la velocidad de desarrollo y entrega de productos.
+  - Mejora en la colaboración y comunicación entre equipos.
+  - Capacidad para adaptarse rápidamente a cambios del mercado.
+- **Retos:**
+  - Escalar prácticas ágiles en una organización de gran tamaño.
+  - Mantener la coherencia y alineación entre múltiples equipos ágiles.
+
+**Reflexión crítica:**
+La experiencia de Google subraya la importancia de una cultura organizacional que respalde la agilidad y la innovación. La flexibilidad en la adopción de prácticas ágiles permite a las empresas adaptarse a sus contextos específicos, pero requiere un compromiso constante con la comunicación y la alineación estratégica.
+
+---
+
+> **Referencias:**
+> - [Atlassian. "The Spotify Model for Scaling Agile"](https://www.atlassian.com/agile/agile-at-scale/spotify)
+> - [McCreery, David. "Google: Pioneering Innovation with Agile Methodologies"](https://medium.com/%40agile-transformation-leaders/how-google-embraced-agile-transformation-for-teams-to-enhance-team-productivity-and-workflow-714b97af50e1)
+ 
