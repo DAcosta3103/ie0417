@@ -18,7 +18,6 @@ El proyecto que se documentó fue una calculadora básica, la cual permite reali
 
 ### Sphinx en Python
 
-### Descripción de los Proyectos
 El proyecto que se documentó fue una simulación de cuenta bancaria modela una cuenta bancaria con funcionalidades básicas como depositar, retirar y consultar el saldo. La documentación fue generada con Sphinx a partir de comentarios doctring en estilo reStructuredText, produciendo un sitio HTML navegable.
 
 
