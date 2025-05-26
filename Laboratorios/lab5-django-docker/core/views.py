@@ -1,3 +1,4 @@
-from django.shortcuts import render
+from django.http import HttpResponse  # <-- Importar HttpResponse
 
-# Create your views here.
+def home(request):
+    return HttpResponse("¡Hola desde lab5-docker-django con Docker y Django!")

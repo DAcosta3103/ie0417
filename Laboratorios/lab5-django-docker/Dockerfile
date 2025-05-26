@@ -9,6 +9,9 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Instalar netcat-openbsd para wait-for-db en entrypoint.sh
+RUN apt-get update && apt-get install -y netcat-openbsd && rm -rf /var/lib/apt/lists/*
+
 # Copia todo el código
 COPY . /code/
 
