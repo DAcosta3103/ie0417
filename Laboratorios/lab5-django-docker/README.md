@@ -1,64 +1,130 @@
-# Documentación del Laboratorio 5 - IE0417
-
-## Equipo
-Diego Acosta y Josué Zuniga
+# 📄 Documentación del Laboratorio 5 - IE0417  
+**Despliegue de una Aplicación Django con Docker**
 
 ---
 
-## 1. Descripción General
-
-Este laboratorio consiste en la creación y despliegue de una aplicación web básica usando Django, orquestada mediante Docker y Docker Compose con una base de datos PostgreSQL.  
-El objetivo principal es lograr una solución dockerizada que incluya migraciones automáticas, gestión de variables de entorno y persistencia de datos.
-
----
-
-## 2. Arquitectura del Proyecto
-
-El proyecto está organizado con los siguientes componentes:
-
-- *Servicio web (web):* Contenedor que ejecuta la aplicación Django, configurado para correr con Gunicorn y gestionado mediante un Dockerfile.  
-- *Base de datos (db):* Contenedor PostgreSQL que almacena los datos persistentes.  
-- *Red Docker:* Ambos contenedores están conectados a una red bridge llamada backend que permite comunicación segura.  
-- *Volumen Docker:* Se usa un volumen dbdata para asegurar que los datos de la base de datos persistan aunque el contenedor se reinicie o elimine.
+## 👥 Equipo
+**Diego Acosta**  
+**Josué Zúñiga**
 
 ---
 
-## 3. Descripción de Archivos Clave
+## 1. 🧾 Descripción General
 
-### 3.1 Dockerfile
+Este laboratorio tuvo como objetivo principal comprender y aplicar el ciclo completo de despliegue de una aplicación web utilizando Docker, con énfasis en la infraestructura y no en el desarrollo de la lógica de negocio.  
+Se trabajó con una aplicación Django mínima, contenedorizada con Docker y orquestada mediante Docker Compose, integrando una base de datos PostgreSQL, red personalizada y almacenamiento persistente.
 
-Define la imagen personalizada para la aplicación Django, basada en python:3.11-slim.  
-Incluye la instalación de dependencias desde requirements.txt, la instalación de netcat-openbsd para la espera activa de la base de datos, copia del código fuente, y configuración del entrypoint.sh.
+La solución permite:
 
-### 3.2 docker-compose.yml
-
-Orquesta los servicios web y db, define las variables de entorno compartidas mediante un archivo .env, monta volúmenes para persistencia y define la red de comunicación entre contenedores.
-
-### 3.3 entrypoint.sh
-
-Script que se ejecuta al iniciar el contenedor web.  
-Espera a que la base de datos esté lista usando nc, ejecuta migraciones, recoge archivos estáticos y luego arranca Gunicorn.
-
-### 3.4 settings.py
-
-Configuración de Django para conectarse a la base de datos PostgreSQL usando variables de entorno.  
-Configura apps instaladas, middleware, rutas, y demás parámetros necesarios para la ejecución correcta.
-
-### 3.5 core/views.py
-
-Contiene la vista home que responde en la ruta raíz (/) con un mensaje simple para verificar que la app funciona correctamente.
+- Despliegue automático del entorno completo con un solo comando.
+- Separación clara de responsabilidades (base de datos vs. aplicación web).
+- Persistencia de datos entre reinicios de contenedores.
+- Aislamiento de servicios mediante redes Docker.
 
 ---
 
-## 4. Instrucciones de Ejecución
+## 2. 🏗️ Arquitectura del Proyecto
 
-1. Colocarse en el directorio raíz del proyecto:
+La arquitectura se diseñó bajo el enfoque de microservicios en contenedores independientes. A continuación, se describen los principales componentes:
+
+- **Web (Django):**  
+  Servicio que ejecuta la aplicación web mediante Gunicorn. Se construye a partir de un `Dockerfile` personalizado y se conecta a la base de datos utilizando variables de entorno seguras.
+
+- **Base de Datos (PostgreSQL):**  
+  Contenedor oficial de PostgreSQL, parametrizado mediante `.env` y con almacenamiento persistente a través de un volumen.
+
+- **Red Docker (backend):**  
+  Red bridge personalizada que asegura la comunicación entre `web` y `db`, evitando colisiones con otras redes del host.
+
+- **Volumen Docker (dbdata):**  
+  Almacena de forma persistente los datos de la base de datos, incluso si el contenedor es eliminado o recreado.
+
+---
+
+## 3. 🧾 Descripción de Archivos Clave
+
+### 🔹 3.1 `Dockerfile`
+
+Contiene las instrucciones para construir una imagen optimizada para producción basada en `python:3.11-slim`.  
+Instala dependencias, configura el entorno de trabajo y define el comando de arranque con Gunicorn. Incluye también utilidades como `netcat-openbsd` para esperar activamente la conexión con la base de datos antes de iniciar el servidor web.
+
+---
+
+### 🔹 3.2 `docker-compose.yml`
+
+Archivo de orquestación que:
+
+- Define los servicios `web` y `db`.
+- Conecta ambos mediante la red `backend`.
+- Establece un volumen llamado `dbdata` para la base de datos.
+- Carga variables de entorno desde el archivo `.env`.
+- Asegura que el servicio `web` dependa de la disponibilidad del servicio `db`.
+
+---
+
+### 🔹 3.3 `entrypoint.sh`
+
+Script personalizado ejecutado como punto de entrada en el contenedor `web`.  
+Su funcionalidad incluye:
+
+- Esperar que la base de datos esté lista utilizando `nc`.
+- Aplicar migraciones automáticamente.
+- Recolectar archivos estáticos.
+- Iniciar Gunicorn como servidor WSGI para servir la aplicación Django.
+
+Esto garantiza que el entorno esté completamente funcional en cada despliegue.
+
+---
+
+### 🔹 3.4 `settings.py`
+
+Archivo de configuración principal de Django modificado para producción.  
+Incluye:
+
+- Configuración de conexión a base de datos PostgreSQL mediante variables de entorno.
+- Registro de aplicaciones instaladas, incluyendo la app principal `core`.
+- Configuración de `STATIC_ROOT` para la gestión de archivos estáticos.
+- Seguridad básica para despliegue local.
+
+---
+
+### 🔹 3.5 `core/views.py`
+
+Contiene una vista base (`home`) que responde a la raíz del sitio (`/`) con un mensaje simple.  
+Este endpoint permite validar que el entorno está correctamente desplegado y funcional.
+
+---
+
+## 4. 🚀 Instrucciones de Ejecución
+
+Para levantar el entorno desde cero:
+
+1. Clonar o descargar el repositorio.
+2. Ingresar al directorio raíz del proyecto.
+3. Ejecutar el siguiente comando:
 
    ```bash
-   cd lab5-docker-django
+   docker-compose up --build
+   ```
 
+4. Una vez completado el proceso de construcción e inicialización, la aplicación estará accesible desde el navegador en:
 
+   ```
+   http://localhost:8000
+   ```
 
-Así se ve la página funcionando:
+5. Para detener los contenedores:
 
-![Página funcionando](PaginaDjangoDockerFINALFuncionando.png)
+   ```bash
+   docker-compose down
+   ```
+
+---
+
+## 5. 📸 Evidencia de Funcionamiento
+
+La siguiente imagen muestra la página de inicio de la aplicación desplegada correctamente a través de Docker:
+
+![Página Django funcionando con Docker](PaginaDjangoDockerFINALFuncionando.png)
+
+> *Figura 1: Aplicación Django funcionando correctamente desde el contenedor `web` tras inicialización del entorno.*
