@@ -1,7 +1,7 @@
 # Documentación del Laboratorio 5 - IE0417
 
 ## Equipo
-Diego y Josué
+Diego Acosta y Josué Zuniga
 
 ---
 
@@ -56,3 +56,9 @@ Contiene la vista home que responde en la ruta raíz (/) con un mensaje simple p
 
    ```bash
    cd lab5-docker-django
+
+
+
+Así se ve la página funcionando:
+
+![Página funcionando](PaginaDjangoDockerFINALFuncionando.png)
