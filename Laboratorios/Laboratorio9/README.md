@@ -58,4 +58,4 @@ Su backend está construido sobre **Django** y emplea una arquitectura modular c
 
 ### Plan de trabajo:
 
-![PlanDeTrabajo](Imagenes/DiagramadeGantt.jpeg)
+![PlanDeTrabajo](Imagenes/DiagramaDeGantt.jpeg)
